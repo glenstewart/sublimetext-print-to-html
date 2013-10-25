@@ -62,7 +62,7 @@ class PrintToHtmlCommand(sublime_plugin.TextCommand):
 
         # gather Pygment related option flags from plugin settings
         optlist = ['line_numbering', 'draw_background', 'line_anchors']
-        options = dict(map(lambda x: (x, settings.get(x, False)), optlist))
+        options = dict([(x, settings.get(x, False)) for x in optlist])
 
         # style
         style = settings.get('style', 'default')
@@ -172,13 +172,13 @@ def get_lexer(filename, syntax, text):
     # special case for Plain Text syntax and empty files
     if syntax == 'plain text' or text == '':
         lexer = pygments.lexers.TextLexer()
-        print 'Plain text or no text, defaulting to:', lexer
+        print('Plain text or no text, defaulting to:', lexer)
         return lexer
 
     # look for a lexer based on the ST2 syntax name
     try:
         lexer = pygments.lexers.get_lexer_by_name(syntax)
-        print 'Guessed lexer from ST2 syntax setting:', lexer
+        print('Guessed lexer from ST2 syntax setting:', lexer)
         return lexer
     except pygments.util.ClassNotFound:
         pass
@@ -186,10 +186,10 @@ def get_lexer(filename, syntax, text):
     # look for a lexer based on the ST2 sub-syntax name, e.g. 'Django' in 'HTML (Django)'
     if '(' in syntax:
         syntax = re.sub(r'.+\((.+)\)', r'\1', syntax)
-        print syntax
+        print(syntax)
         try:
             lexer = pygments.lexers.get_lexer_by_name(syntax)
-            print 'Guessed lexer from ST2 sub-syntax setting:', lexer
+            print('Guessed lexer from ST2 sub-syntax setting:', lexer)
             return lexer
         except pygments.util.ClassNotFound:
             pass
@@ -198,14 +198,14 @@ def get_lexer(filename, syntax, text):
     if filename is not None and len(filename) >= 3:
         try:
             lexer = pygments.lexers.guess_lexer_for_filename(filename, text)
-            print 'Guessed lexer from filename:', lexer
+            print('Guessed lexer from filename:', lexer)
             return lexer
         except pygments.util.ClassNotFound:
             pass
 
     # guess lexer by analyzing the text
     lexer = pygments.lexers.guess_lexer(text)
-    print 'Guessed lexer from text analysis:', lexer
+    print('Guessed lexer from text analysis:', lexer)
     return lexer
 
 
