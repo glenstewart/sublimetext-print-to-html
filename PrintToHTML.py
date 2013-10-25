@@ -132,7 +132,7 @@ class PrintToHtmlCommand(sublime_plugin.TextCommand):
 
 def construct_html_document(encoding, title, css, texts, body_attribs):
     """Populate simple boilerplate HTML with given arguments."""
-    body = '\n'.join(str(v) for v in texts).decode('utf-8').encode('ascii', 'xmlcharrefreplace')
+    body = '\n'.join(str(v) for v in texts)
     output = '\n'.join([
         '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">',
         '<meta charset="%s">' % encoding,
