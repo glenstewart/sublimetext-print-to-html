@@ -153,7 +153,7 @@ def construct_html_document(encoding, title, css, texts, body_attribs):
 def send_to_browser(html):
     """Create a temp file containing html and open it in the default web browser."""
     tmp_html = tempfile.NamedTemporaryFile(delete=False, suffix='.html')
-    tmp_html.write(html)
+    tmp_html.write(bytes(html, 'UTF-8'))
     tmp_html.close()
     desktop.open(tmp_html.name)
 
