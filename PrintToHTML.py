@@ -11,8 +11,7 @@ import pygments
 import pygments.formatters
 import pygments.lexers
 
-with open(sublime.load_resource('Packages/sublimetext-print-to-html/wordwrap.js')) as f:
-    WORD_WRAP_SCRIPT_BLOCK = '\n'.join(['<script>', f.read(), '</script>'])
+WORD_WRAP_SCRIPT_BLOCK = '\n'.join(['<script>', sublime.load_resource('Packages/sublimetext-print-to-html/wordwrap.js'), '</script>'])
 
 class PrintToHtmlCommand(sublime_plugin.TextCommand):
     """Convert current file to HTML and view in browser or ST2 buffer."""
