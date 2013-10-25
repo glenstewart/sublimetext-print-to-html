@@ -132,7 +132,8 @@ class PrintToHtmlCommand(sublime_plugin.TextCommand):
 
 def construct_html_document(encoding, title, css, texts, body_attribs):
     """Populate simple boilerplate HTML with given arguments."""
-    body = '\n'.join(str(v) for v in texts)
+    texts = [bytes(v,'UTF-8') if type(v) == Str else v for v in texts]
+    body = b'\n'.join(texts)#.decode('utf-8').encode('ascii', 'xmlcharrefreplace')
     output = '\n'.join([
         '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">',
         '<meta charset="%s">' % encoding,
@@ -153,7 +154,7 @@ def construct_html_document(encoding, title, css, texts, body_attribs):
 def send_to_browser(html):
     """Create a temp file containing html and open it in the default web browser."""
     tmp_html = tempfile.NamedTemporaryFile(delete=False, suffix='.html')
-    tmp_html.write(bytes(html, 'UTF-8'))
+    tmp_html.write(bytes(html,'UTF-8'))
     tmp_html.close()
     desktop.open(tmp_html.name)
 
