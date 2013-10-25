@@ -11,7 +11,7 @@ import pygments
 import pygments.formatters
 import pygments.lexers
 
-with open('wordwrap.js') as f:
+with open(sublime.load_resource('Packages/sublimetext-print-to-html/wordwrap.js')) as f:
     WORD_WRAP_SCRIPT_BLOCK = '\n'.join(['<script>', f.read(), '</script>'])
 
 class PrintToHtmlCommand(sublime_plugin.TextCommand):
