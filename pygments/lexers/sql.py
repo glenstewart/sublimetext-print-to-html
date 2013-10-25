@@ -250,12 +250,12 @@ class lookahead(object):
     def send(self, i):
         self._nextitem = i
         return i
-    def next(self):
+    def __next__(self):
         if self._nextitem is not None:
             ni = self._nextitem
             self._nextitem = None
             return ni
-        return self.iter.next()
+        return next(self.iter)
 
 
 class PostgresConsoleLexer(Lexer):
@@ -283,7 +283,7 @@ class PostgresConsoleLexer(Lexer):
             insertions = []
             while 1:
                 try:
-                    line = lines.next()
+                    line = next(lines)
                 except StopIteration:
                     # allow the emission of partially collected items
                     # the repl loop will be broken below
@@ -320,7 +320,7 @@ class PostgresConsoleLexer(Lexer):
             # Emit the output lines
             out_token = Generic.Output
             while 1:
-                line = lines.next()
+                line = next(lines)
                 mprompt = re_prompt.match(line)
                 if mprompt is not None:
                     # push the line back to have it processed by the prompt
