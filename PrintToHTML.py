@@ -1,5 +1,10 @@
 # coding=utf8
 
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 import sublime
 import sublime_plugin
 import desktop
@@ -132,8 +137,8 @@ class PrintToHtmlCommand(sublime_plugin.TextCommand):
 
 def construct_html_document(encoding, title, css, texts, body_attribs):
     """Populate simple boilerplate HTML with given arguments."""
-    texts = [bytes(v,'UTF-8') if type(v) == Str else v for v in texts]
-    body = b'\n'.join(texts)#.decode('utf-8').encode('ascii', 'xmlcharrefreplace')
+    texts = [bytes(v,'UTF-8') if isinstance(v,str) else v for v in texts]
+    body = b'\n'.join(texts).decode('utf-8')
     output = '\n'.join([
         '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">',
         '<meta charset="%s">' % encoding,
