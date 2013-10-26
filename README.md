@@ -1,7 +1,7 @@
-Sublime Text 2 Print to HTML
+Sublime Text 3 Print to HTML
 ============================
 
-A Sublime Text 2 plugin to print files as HTML with color syntax highlighting and line numbers, and open them in your browser for printing.
+A Sublime Text 3 plugin to print files as HTML with color syntax highlighting and line numbers, and open them in your browser for printing.
 
 Colorization and HTML conversion is currently performed by [Pygments][0], which supports a range of [languages and syntaxes][3].
 
