@@ -162,10 +162,8 @@ def send_to_browser(html):
 def send_to_new_buffer(view, html):
     """Load html into a new buffer in the same window as view."""
     new_view = view.window().new_file()
-    new_edit = new_view.begin_edit()
-    new_view.insert(new_edit, 0, html)
-    new_view.end_edit(new_edit)
-
+    new_view.run_command('append',{'characters':html})
+    
 
 def get_lexer(filename, syntax, text):
     """Try to determine the appropriate lexer for the given file/syntax/text."""
