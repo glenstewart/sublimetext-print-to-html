@@ -13,7 +13,7 @@ Colorization and HTML conversion is currently performed by [Pygments][0], which 
 
 If you prefer to install manually, install git, then:
 
-    git clone https://github.com/joelpt/sublimetext-print-to-html "<Sublime Text 2 Packages folder>/Print to HTML"
+    git clone https://github.com/jchampy/sublimetext-print-to-html "<Sublime Text 3 Packages folder>/Print to HTML"
 
 ## Usage
 
@@ -26,6 +26,8 @@ If you prefer to install manually, install git, then:
 
 ## Future goals
 
+ * Re-Implement Word Wrap JavaScript once bugs are hashed out from SublimeText2 Version
+
  * Use ST2's internal scope and color data from a buffer to produce an exact replica of a file from ST2 in HTML form. The current approach using Pygments has limitations regarding formats unknown by Pygments (e.g. Markdown) and documents with mixed syntaxes (e.g. PHP embedded in HTML).
 
 ## Credits
@@ -33,12 +35,14 @@ If you prefer to install manually, install git, then:
 This code is available on [Github][1]. Pull requests are welcome.
 
 Created by [Joel Thornton][4]. 
+Forked and Pushed for SublimeText3 by [Jake Champlin][5]
 
 Uses the [Pygments][0] library (included) for code-to-HTML conversion.
 
 
  [0]: http://pygments.org/
- [1]: https://github.com/joelpt/sublimetext-print-to-html
- [2]: http://wbond.net/sublime_packages/package_control
+ [1]: https://github.com/jchampy/sublimetext-print-to-html
+ [2]: http://sublime.wbond.net/installation
  [3]: http://pygments.org/languages/
  [4]: mailto:sublime@joelpt.net
+ [5]: mailto:jake.champlin.27@gmail.com
