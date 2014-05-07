@@ -34,17 +34,21 @@ If you prefer to install manually, install git, then:
 
 ## Credits
 
-This code is available on [Github][1]. Pull requests are welcome.
+The original code is available on [Github][1]. Pull requests are welcome.
 
 Created by [Joel Thornton][4]. 
-Forked and Pushed for SublimeText3 by [Jake Champlin][5]
+
+Forked and updated to Python3 by [Matt Hulse][5]
+
+Forked and Pushed for SublimeText3 by [Jake Champlin][6]
 
 Uses the [Pygments][0] library (included) for code-to-HTML conversion.
 
 
  [0]: http://pygments.org/
- [1]: https://github.com/jchampy/sublimetext-print-to-html
+ [1]: https://github.com/joelpt/sublimetext-print-to-html
  [2]: http://sublime.wbond.net/installation
  [3]: http://pygments.org/languages/
  [4]: mailto:sublime@joelpt.net
- [5]: mailto:jake.champlin.27@gmail.com
+ [5]: mailto:matt.hulse@gmail.com
+ [6]: mailto:jake.champlin.27@gmail.com
