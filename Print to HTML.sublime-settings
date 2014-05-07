@@ -23,13 +23,15 @@
 
     // If true, long lines will be wrapped onto multiple lines
     // If false, let the browser decide how to handle long lines
-    // Removed Until Bug Fix. - JC 05.07.14
+    // Default to false for ST3. 
+    // Will not function yet in ST3. 
     //"word_wrap": false,
 
     // If true, allow the browser to wrap long lines at any character.
     // If false, only allow the browser to wrap long lines between complete words.
     // Has no effect when word_wrap is false.
-    // "word_wrap_break_anywhere": false,
+    // Does NOT work with ST3 yet. 
+    //"word_wrap_break_anywhere": false,
 
     // If true, output line numbers to the left of the code
     "line_numbering": true,
