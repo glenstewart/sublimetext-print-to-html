@@ -5,35 +5,13 @@
 
     Contains built-in styles.
 
-    :copyright: Copyright 2006-2012 by the Pygments team, see AUTHORS.
+    :copyright: Copyright 2006-2015 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
 
 from pygments.plugin import find_plugin_styles
 from pygments.util import ClassNotFound
 
-## HACK: We must import this here otherwise ST2 will fail to find it, because
-## normally Pygments imports them only on-demand and therefore ST2 thinks they
-## don't really exist
-import pygments.styles.murphy
-import pygments.styles.emacs
-import pygments.styles.friendly
-import pygments.styles.vs
-import pygments.styles.native
-import pygments.styles.bw
-import pygments.styles.fruity
-import pygments.styles.manni
-import pygments.styles.perldoc
-import pygments.styles.borland
-import pygments.styles.tango
-import pygments.styles.pastie
-import pygments.styles.rrt
-import pygments.styles.trac
-import pygments.styles.monokai
-import pygments.styles.default
-import pygments.styles.autumn
-import pygments.styles.colorful
-import pygments.styles.vim
 
 #: Maps style names to 'submodule::classname'.
 STYLE_MAP = {
@@ -56,6 +34,14 @@ STYLE_MAP = {
     'vs':       'vs::VisualStudioStyle',
     'tango':    'tango::TangoStyle',
     'rrt':      'rrt::RrtStyle',
+    'xcode':    'xcode::XcodeStyle',
+    'igor':     'igor::IgorStyle',
+    'paraiso-light': 'paraiso_light::ParaisoLightStyle',
+    'paraiso-dark': 'paraiso_dark::ParaisoDarkStyle',
+    'lovelace': 'lovelace::LovelaceStyle',
+    'algol':    'algol::AlgolStyle',
+    'algol_nu': 'algol_nu::Algol_NuStyle',
+    'arduino':  'arduino::ArduinoStyle'
 }
 
 
