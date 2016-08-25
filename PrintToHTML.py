@@ -207,8 +207,12 @@ def get_lexer(filename, syntax, text):
             pass
 
     # guess lexer by analyzing the text
-    lexer = pygments.lexers.guess_lexer(text)
-    print('Guessed lexer from text analysis:', lexer)
+    try:
+        lexer = pygments.lexers.guess_lexer(text)
+        print('Guessed lexer from text analysis:', lexer)
+    except pygments.util.ClassNotFound:
+        lexer = pygments.lexers.TextLexer()
+        print('Failed to guess syntax, fell back to plaintext')
     return lexer
 
 
