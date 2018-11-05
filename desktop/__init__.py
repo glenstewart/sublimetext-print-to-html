@@ -290,7 +290,6 @@ def open(url, desktop=None, wait=0):
     # Finish with an error where no suitable desktop was identified.
 
     else:
-        #raise OSError("Desktop '%s' not supported (neither DESKTOP_LAUNCH nor os.startfile could be used)" % desktop_in_use)
         raise OSError("Desktop '%s' not supported (neither DESKTOP_LAUNCH nor os.startfile could be used)" % desktop_in_use)
 
     return _run(cmd, 0, wait)
