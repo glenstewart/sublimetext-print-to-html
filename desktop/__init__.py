@@ -160,6 +160,9 @@ def get_desktop():
     elif "XDG_CURRENT_DESKTOP" in os.environ and \
         os.environ.get("XDG_CURRENT_DESKTOP").lower() == "unity":
         return "Unity"
+    elif "XDG_CURRENT_DESKTOP" in os.environ and \
+        os.environ.get("XDG_CURRENT_DESKTOP").lower() == "lxde":
+        return "LXDE"
     elif "GNOME_DESKTOP_SESSION_ID" in os.environ or \
         "GNOME_KEYRING_SOCKET" in os.environ:
         return "GNOME"
@@ -170,7 +173,7 @@ def get_desktop():
     elif _is_xfce():
         return "XFCE"
 
-    # KDE, GNOME and XFCE run on X11, so we have to test for X11 last.
+    # KDE, GNOME, LXDE and XFCE run on X11, so we have to test for X11 last.
 
     if _is_x11():
         return "X11"
@@ -203,6 +206,8 @@ def use_desktop(desktop):
         return "KDE"
     elif (desktop or detected) == "Unity":
         return "Unity"
+    elif (desktop or detected) == "LXDE":
+        return "LXDE"
     elif (desktop or detected) == "GNOME":
         return "GNOME"
     elif (desktop or detected) == "XFCE":
@@ -233,7 +238,7 @@ def open(url, desktop=None, wait=0):
     particular desktop environment's mechanisms to open the 'url' instead of
     guessing or detecting which environment is being used.
 
-    Suggested values for 'desktop' are "standard", "KDE", "GNOME", "XFCE",
+    Suggested values for 'desktop' are "standard", "KDE", "GNOME", "LXDE", "XFCE",
     "Mac OS X", "Windows" where "standard" employs a DESKTOP_LAUNCH environment
     variable to open the specified 'url'. DESKTOP_LAUNCH should be a command,
     possibly followed by arguments, and must have any special characters
@@ -267,6 +272,9 @@ def open(url, desktop=None, wait=0):
     elif desktop_in_use == "Unity":
         cmd = ["xdg-open", url]
 
+    elif desktop_in_use == "LXDE":
+        cmd = ["xdg-open", url]
+
     elif desktop_in_use == "GNOME":
         cmd = ["gnome-open", url]
 
@@ -282,6 +290,7 @@ def open(url, desktop=None, wait=0):
     # Finish with an error where no suitable desktop was identified.
 
     else:
+        #raise OSError("Desktop '%s' not supported (neither DESKTOP_LAUNCH nor os.startfile could be used)" % desktop_in_use)
         raise OSError("Desktop '%s' not supported (neither DESKTOP_LAUNCH nor os.startfile could be used)" % desktop_in_use)
 
     return _run(cmd, 0, wait)
